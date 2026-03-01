@@ -95,30 +95,30 @@ export default function HomePage() {
           </p>
 
           {/* Search */}
-          <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-6">
-            <div className="flex items-center bg-white rounded-2xl p-2 shadow-2xl">
-              <div className="flex items-center flex-1 px-3">
-                <MapPin size={18} className="text-gray-300 mr-2 flex-shrink-0" />
+          <form onSubmit={handleSearch} className="max-w-2xl mx-auto mb-6 px-2 sm:px-0">
+            <div className="flex items-center bg-white rounded-2xl shadow-2xl overflow-hidden">
+              <div className="flex items-center flex-1 px-3 min-w-0">
+                <MapPin size={16} className="text-gray-300 mr-2 flex-shrink-0" />
                 <input
                   type="text"
-                  placeholder="Search by city, state or area..."
+                  placeholder="Search by city or state..."
                   value={search}
                   onChange={e => setSearch(e.target.value)}
-                  className="flex-1 text-gray-800 bg-transparent text-sm font-medium placeholder-gray-300 focus:outline-none py-2"
+                  className="flex-1 min-w-0 text-gray-800 bg-transparent text-sm font-medium placeholder-gray-300 focus:outline-none py-3.5"
                 />
                 {search && (
-                  <button type="button" onClick={() => { setSearch(''); setFilters(f => ({ ...f, city: undefined })); }}>
-                    <X size={16} className="text-gray-300 hover:text-gray-500" />
+                  <button type="button" onClick={() => { setSearch(''); setFilters(f => ({ ...f, city: undefined })); }} className="flex-shrink-0 ml-1">
+                    <X size={14} className="text-gray-300 hover:text-gray-500" />
                   </button>
                 )}
               </div>
               <button
                 type="submit"
-                className="flex items-center space-x-2 text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
+                className="flex-shrink-0 flex items-center space-x-1.5 text-white px-4 sm:px-6 py-3.5 text-sm font-semibold transition-all hover:opacity-90"
                 style={{ background: 'linear-gradient(135deg, #FF385C, #E31C5F)' }}
               >
-                <Search size={16} />
-                <span>Search</span>
+                <Search size={15} />
+                <span className="hidden sm:inline">Search</span>
               </button>
             </div>
           </form>
