@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Trash2, LogOut, Home, FileText, Users, Shield, MapPin, IndianRupee, TrendingUp, RefreshCw } from 'lucide-react';
 import toast from 'react-hot-toast';
-import api from '../lib/api';
+import api, { getImageUrl } from '../lib/api';
 
 type Tab = 'properties' | 'requirements' | 'users';
 
@@ -209,7 +209,7 @@ export default function AdminDashboardPage() {
                       {/* Image */}
                       <div className="w-20 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-gray-100">
                         {p.images[0] ? (
-                          <img src={`http://localhost:8000${p.images[0]}`} alt="" className="w-full h-full object-cover" />
+                          <img src={getImageUrl(p.images[0])} alt="" className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
                             <Home size={20} className="text-gray-300" />

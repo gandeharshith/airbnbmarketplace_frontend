@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Home, FileText, Plus, Trash2, MapPin, TrendingUp, LogOut } from 'lucide-react';
-import api, { API_BASE_URL } from '../lib/api';
+import api, { getImageUrl } from '../lib/api';
 import type { PropertyListItem, Requirement } from '../types';
 import { formatPrice, formatRevenue, getUser, logout } from '../lib/auth';
 import toast from 'react-hot-toast';
@@ -127,7 +127,7 @@ export default function DashboardPage() {
           ) : (
             <div className="space-y-3">
               {listings.map(l => {
-                const img = l.images?.[0] ? `${API_BASE_URL}${l.images[0]}` : null;
+                const img = l.images?.[0] ? getImageUrl(l.images[0]) : null;
                 return (
                   <div key={l.id} className="bg-white rounded-2xl border border-gray-100 p-4 flex gap-4 hover:shadow-sm transition-shadow">
                     <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-100">
